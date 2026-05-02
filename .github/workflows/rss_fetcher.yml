@@ -2,7 +2,7 @@ name: واکشی مقالات
 
 on:
   schedule:
-    - cron: '0 */6 * * *'   # هر ۶ ساعت
+    - cron: '0 */24 * * *'   # هر 24 ساعت
   workflow_dispatch:         # برای اجرای دستی
 
 jobs:
@@ -10,12 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: دریافت کد مخزن
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           persist-credentials: true
 
       - name: نصب پایتون
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.x'
 
@@ -31,4 +31,5 @@ jobs:
           git config --local user.name "GitHub Actions Bot"
           git add -A
           git diff --staged --quiet || git commit -m "📰 بروزرسانی مقالات"
+          git pull --rebase origin main
           git push
