@@ -1,4 +1,3 @@
-
 https://www.eurogamer.net/feed/features
 https://www.eurogamer.net/feed/reviews
 https://www.eurogamer.net/feed/digitalfoundry
@@ -26,3 +25,4 @@ https://gamingbolt.com/category/interview/feed
 https://gamegeeksnews.com/category/game-reviews/feed
 https://gameinformer.com/rss.xml
 https://www.gamesradar.com/feeds/tag/indie-spotlight
+https://everyonegaming.com/news/category/review/feed
