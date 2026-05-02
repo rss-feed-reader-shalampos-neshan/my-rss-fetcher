@@ -26,3 +26,4 @@ https://gamegeeksnews.com/category/game-reviews/feed
 https://gameinformer.com/rss.xml
 https://www.gamesradar.com/feeds/tag/indie-spotlight
 https://everyonegaming.com/news/category/review/feed
+https://www.mypodcastdata.com/podcast/fully-ramblomatic/rss
