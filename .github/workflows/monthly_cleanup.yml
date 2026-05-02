@@ -1,0 +1,28 @@
+name: پاکسازی ماهانه مقالات
+
+on:
+  schedule:
+    - cron: '0 4 1 * *'   # هر ماه، روز اول ساعت ۴ صبح UTC
+  workflow_dispatch:        # برای اجرای دستی در صورت تمایل
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: دریافت کد مخزن
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: پاکسازی پوشه articles (بدون حذف حافظه ربات)
+        run: |
+          rm -rf articles/*
+          echo "پوشه articles خالی شد. فایل processed_urls.json باقی ماند."
+
+      - name: ثبت تغییرات در مخزن
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions Bot"
+          git add -A
+          git diff --staged --quiet || git commit -m "🧹 پاکسازی ماهانه مقالات"
+          git push
