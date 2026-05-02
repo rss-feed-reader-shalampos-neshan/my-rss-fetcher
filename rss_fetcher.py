@@ -5,6 +5,7 @@ import os
 import json
 import re
 import time
+from datetime import datetime  # اضافه شدن برای ثبت تاریخ در نام فایل
 from docx import Document
 from docx.shared import Pt
 
@@ -75,7 +76,8 @@ for idx, feed_url in enumerate(feeds):
                     doc.add_paragraph(paragraph_text.strip())
 
             safe_title = re.sub(r'[<>:"/\\|?*]', '_', title)[:80]
-            filename = f"articles/{idx}_{safe_title}.docx"
+            timestamp = datetime.utcnow().strftime('%Y-%m-%d_%H%M')  # زمان واکشی مقاله
+            filename = f"articles/{idx}_{timestamp}_{safe_title}.docx"
             doc.save(filename)
             print(f"ذخیره شد: {filename}")
 
@@ -83,7 +85,7 @@ for idx, feed_url in enumerate(feeds):
             new_processed.add(article_url)
 
             # مکث بیشتر برای احترام به سرور (مخصوصاً برای سایت‌های حساس مثل CBR)
-            time.sleep(4)
+            time.sleep(5)
 
         except Exception as e:
             print(f"خطا در استخراج {article_url}: {e}")
