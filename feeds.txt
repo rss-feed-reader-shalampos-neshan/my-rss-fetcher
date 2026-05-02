@@ -1,4 +1,3 @@
-https://www.cbr.com/feed/category/game-features/
 https://gamingbolt.com/video-game-reviews/feed
 https://www.pcgamer.com/feeds/articletype/review/
 https://www.ign.com/rss/v2/articles/feed?vertical=games
