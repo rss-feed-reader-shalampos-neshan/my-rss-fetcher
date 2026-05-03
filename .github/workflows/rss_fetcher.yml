@@ -2,7 +2,7 @@ name: واکشی مقالات
 
 on:
   schedule:
-    - cron: '0 */24 * * *'   # هر 24 ساعت
+    - cron: '0 */8 * * *'   # هر 8 ساعت
   workflow_dispatch:         # برای اجرای دستی
 
 jobs:
