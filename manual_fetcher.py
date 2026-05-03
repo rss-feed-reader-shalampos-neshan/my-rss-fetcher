@@ -4,6 +4,7 @@ import json
 import re
 import time
 from datetime import datetime
+from urllib.parse import urlparse, parse_qs   # جدید: برای تحلیل لینک‌های گوگل
 from newspaper import Article
 from docx import Document
 from docx.shared import Pt
@@ -26,7 +27,18 @@ headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
 }
 
-for idx, article_url in enumerate(urls):
+for idx, raw_url in enumerate(urls):
+    article_url = raw_url   # با لینک خام شروع می‌کنیم
+
+    # اگر لینک از نوع گوگل باشد، لینک اصلی را بیرون می‌کشیم
+    if 'google.com/url' in article_url:
+        parsed = urlparse(article_url)
+        query_params = parse_qs(parsed.query)
+        if 'url' in query_params:
+            article_url = query_params['url'][0]   # لینک تمیز را جایگزین می‌کنیم
+            print(f"لینک گوگل شناسایی شد. استفاده از لینک اصلی: {article_url}")
+
+    # حالا با لینک تمیز (یا همان لینک اولیه اگر گوگل نبود) ادامه می‌دهیم
     if article_url in processed_urls:
         print(f"مقاله قبلاً ذخیره شده: {article_url}")
         continue
@@ -69,6 +81,7 @@ for idx, article_url in enumerate(urls):
         doc.save(filename)
         print(f"ذخیره شد: {filename}")
 
+        # فقط لینک موفق به حافظه اضافه می‌شود
         processed_urls.add(article_url)
         new_processed.add(article_url)
 
@@ -78,7 +91,7 @@ for idx, article_url in enumerate(urls):
         print(f"خطا در استخراج {article_url}: {e}")
         continue
 
-# فقط لینک‌هایی که با موفقیت دریافت شدند را ذخیره کن
+# ذخیرهٔ حافظهٔ لینک‌های موفق
 if new_processed:
     with open(PROCESSED_FILE, 'w', encoding='utf-8') as f:
         json.dump(list(processed_urls), f, indent=2)
