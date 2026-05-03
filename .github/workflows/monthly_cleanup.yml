@@ -14,10 +14,11 @@ jobs:
         with:
           persist-credentials: true
 
-      - name: پاکسازی پوشه articles (بدون حذف حافظه ربات)
+      - name: پاکسازی پوشه‌های articles و manual_articles (بدون حذف حافظه ربات)
         run: |
           rm -rf articles/*
-          echo "پوشه articles خالی شد. فایل processed_urls.json باقی ماند."
+          rm -rf manual_articles/*
+          echo "پوشه‌های articles و manual_articles خالی شدند. فایل‌های processed_urls.json و processed_manual_urls.json باقی ماندند."
 
       - name: ثبت تغییرات در مخزن
         run: |
