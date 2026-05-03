@@ -1,0 +1,33 @@
+name: واکشی دستی مقالات
+
+on:
+  workflow_dispatch:         # فقط دستی اجرا می‌شود
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: دریافت کد مخزن
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: نصب پایتون
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: نصب کتابخانه‌ها
+        run: pip install feedparser newspaper3k lxml_html_clean python-docx
+
+      - name: اجرای اسکریپت دستی
+        run: python manual_fetcher.py
+
+      - name: ثبت تغییرات در مخزن
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions Bot"
+          git add -A
+          git diff --staged --quiet || git commit -m "📥 واکشی دستی مقالات"
+          git pull --rebase origin main
+          git push
