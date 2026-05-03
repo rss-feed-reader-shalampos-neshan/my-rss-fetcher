@@ -2,8 +2,8 @@ https://www.eurogamer.net/feed/features
 https://www.eurogamer.net/feed/reviews
 https://www.eurogamer.net/feed/digitalfoundry
 https://www.ign.com/rss/v2/articles/feed?vertical=games
-https://www.gamespot.com/feeds/reviews
-https://www.gamespot.com/feeds/new-games
+https://www.gamespot.com/feeds/reviews/?format=rss
+https://www.gamespot.com/feeds/new-games/?format=rss
 https://www.pcgamer.com/feeds/articletype/review/
 https://www.gamesradar.com/feeds/articletype/review/
 https://www.gamesradar.com/feeds/articletype/feature/
