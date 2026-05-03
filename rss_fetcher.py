@@ -77,7 +77,7 @@ for idx, feed_url in enumerate(feeds):
 
             safe_title = re.sub(r'[<>:"/\\|?*]', '_', title)[:80]
             timestamp = datetime.utcnow().strftime('%Y-%m-%d_%H%M')  # زمان واکشی مقاله
-            filename = f"articles/{idx}_{timestamp}_{safe_title}.docx"
+            filename = f"articles/{timestamp}_{safe_title}_{idx}.docx"
             doc.save(filename)
             print(f"ذخیره شد: {filename}")
 
