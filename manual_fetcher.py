@@ -76,7 +76,7 @@ for idx, raw_url in enumerate(urls):
                 doc.add_paragraph(paragraph_text.strip())
 
         safe_title = re.sub(r'[<>:"/\\|?*]', '_', title)[:80]
-        timestamp = datetime.utcnow().strftime('%Y-%m-%d_%H%M')
+        timestamp = datetime.now(datetime.UTC).strftime('%Y-%m-%d_%H%M')   # نیاز به Python 3.11+
         filename = f"manual_articles/{timestamp}_{safe_title}.docx"
         doc.save(filename)
         print(f"ذخیره شد: {filename}")
