@@ -21,6 +21,7 @@ https://gamingtrend.com/rss/
 https://gaming-age.com/category/reviews/feed/
 https://gaming-age.com/category/special-features/feed/
 https://www.cbr.com/feed/
+https://www.cbr.com/feed/category/game-lists/
 https://gamingbolt.com/category/interview/feed
 https://gamegeeksnews.com/category/game-reviews/feed
 https://gameinformer.com/rss.xml
